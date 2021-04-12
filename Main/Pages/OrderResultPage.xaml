@@ -13,7 +13,67 @@
         <StackPanel
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
-        <TextBlock
+
+            <StackPanel 
+            Visibility="{Binding DetailsVis, Converter={StaticResource BoolToVis}}"
+            Grid.Column="2" Grid.Row="1">
+
+                <TextBlock 
+                    Margin="0 7"
+                    Style="{DynamicResource TextBlock_H3}">
+                    <Run Text="Круиз:"/>
+                    <Run FontWeight="DemiBold" Text="{Binding TourDto.Name}"/>
+                </TextBlock>
+
+                <TextBlock 
+                    Margin="0 7"
+                    Style="{DynamicResource TextBlock_H3}">
+                    <Run Text="Дата начала круиза:"/>
+                    <Run FontWeight="DemiBold" Text="{Binding OrderDto.StartDate, StringFormat='dd.MM.yyyy'}"/>
+                </TextBlock>
+                <TextBlock 
+                    Margin="0 7"
+                    Style="{DynamicResource TextBlock_H3}">
+                    <Run Text="Дата окончания круиза : "/>
+                    <Run FontWeight="DemiBold" Text="{Binding OrderDto.EndDate, StringFormat='dd.MM.yyyy'}"/>
+                </TextBlock>
+
+
+                <TextBlock 
+                    Margin="0 7"
+                    Style="{DynamicResource TextBlock_H3}">
+                    <Run Text="Количество пассажиров:"/>
+                    <Run FontWeight="DemiBold" Text="{Binding OrderDto.PeopleCount}"/>
+                </TextBlock>
+
+                <TextBlock 
+                    Margin="0 7"
+                    Style="{DynamicResource TextBlock_H3}">
+                    <Run Text="Количество детей:"/>
+                    <Run FontWeight="DemiBold" Text="{Binding OrderDto.ChildCount}"/>
+                </TextBlock>
+
+            
+
+                <TextBlock 
+                    Margin="0 7"
+                    Style="{DynamicResource TextBlock_H3}">
+                    <Run Text="Общая стоимость:"/>
+                    <Run FontWeight="DemiBold" Text="{Binding OrderDto.FullCost, StringFormat='{}{0} pуб.'}"/>
+                </TextBlock>
+
+                <Button 
+                Margin="0 10"
+                FontSize="18"
+                Command="{Binding NextCommand}"
+                Padding="35 7"
+                Content="Подтвердить заказ">
+
+                </Button>
+
+            </StackPanel>
+
+            <TextBlock
             Text="{Binding Message}"
             HorizontalAlignment="Center"
             Style="{DynamicResource TextBlock_H2}"/>
@@ -22,9 +82,9 @@
 
         <Button Margin="0 15" 
                 VerticalAlignment="Bottom"
-                    Padding="25 7"
+                    Padding="35 7"
                     HorizontalAlignment="Center"
-                    Content="Вернуться на главную" FontSize="15" Command="{Binding NextCommand}"/>
+                    Content="Назад" FontSize="15" Command="{Binding BackCommand}"/>
 
     </Grid>
 </Page>

@@ -22,6 +22,7 @@ namespace Main.ViewModels
 
         protected override void Next()
         {
+            
             pageservice.ChangePage<Pages.OrderDataPage>(PoolIndex, DisappearAnimation.Default);
         }
 

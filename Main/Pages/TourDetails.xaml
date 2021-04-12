@@ -12,13 +12,15 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition MinWidth="200" Width="9*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
             <RowDefinition Height="12*"/>
-            <RowDefinition />
+            <RowDefinition Height="75" />
         </Grid.RowDefinitions>
+
 
         
         <TextBlock 
@@ -40,31 +42,56 @@
             MaxHeight="350"
             Source="{Binding Tour.ImagePath}"/>
 
-            <TextBlock 
-                TextWrapping="Wrap"
-                Margin="15 0 0 0"
-                Style="{DynamicResource TextBlock_H3}"
-                Text="{Binding Tour.Desctiprion}"/>
         </StackPanel>
 
+        <StackPanel
+            Margin="25 0"
+            Grid.Column="3"
+            Grid.Row="1">
+            
+            <TextBlock 
+                TextWrapping="Wrap"
+                Style="{DynamicResource TextBlock_H3}"
+                Text="{Binding Tour.Desctiprion}"/>
 
+            <TextBlock 
+                Margin="0 25 0 0"
+                TextWrapping="Wrap"
+                Style="{DynamicResource TextBlock_H3}"
+                >
+                <Run Text="Стоимость взрослого билета за 1 день: "/>
+                <Run FontWeight="Bold"  Text="{Binding Tour.Cost, StringFormat='{}{0} руб.'}"/>
+            </TextBlock>
+            
+            <TextBlock 
+                Margin="0 5"
+                TextWrapping="Wrap"
+                Style="{DynamicResource TextBlock_H3}"
+                >
+                <Run Text="Стоимость детского билета за 1 день: "/>
+                <Run FontWeight="Bold"  Text="{Binding Tour.ChildCost, StringFormat='{}{0} руб.'}"/>
+            </TextBlock>
+            
+        </StackPanel>
+        
         <Button Content="Назад"                 
-                Grid.Row="1"
+                Grid.Row="2"
                 FontSize="15"
                 Grid.Column="1"
                 Padding="35 5"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Bottom"
+                VerticalAlignment="Center"
                 Command="{Binding BackCommand}"/>
 
         <Button
-                Grid.Row="1"
-            Grid.Column="1"
+                Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
                 FontSize="18"
                 Padding="45 7"
                 Content="Продолжить"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
+                VerticalAlignment="Center"
                 Command="{Binding NextCommand}"/>
 
     </Grid>

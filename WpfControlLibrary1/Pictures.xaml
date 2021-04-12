@@ -7,5 +7,7 @@
     <BitmapImage x:Key="l1" UriSource="Images/layner.jpg"/>
     <BitmapImage x:Key="l2" UriSource="Images/layner1.jpg"/>
     <BitmapImage x:Key="l3" UriSource="Images/layner2.jpg"/>
+    <BitmapImage x:Key="user" UriSource="Images/user.png"/>
+    <BitmapImage x:Key="cruise" UriSource="Images/cruise.png"/>
 
 </ResourceDictionary>

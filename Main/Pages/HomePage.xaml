@@ -9,22 +9,56 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HomePage">
 
-    <Grid Background="LightGray">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="{DynamicResource Background}"/>
+        </Grid.Background>
+        
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="16*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Image Grid.ColumnSpan="2" Grid.RowSpan="2" Source="{StaticResource Background}" Stretch="Fill"/>
+
+
+        <Border 
+            Visibility="{Binding IsAutorized, Converter={StaticResource BoolToVis}}"
+            BorderBrush="#7FFFFFFF"
+            Background="#7FFFFFFF"
+            BorderThickness="3"
+            Grid.Column="1"
+            HorizontalAlignment="Right"
+            Padding="15 2"
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            VerticalAlignment="Top"
+            CornerRadius="3">
+
+            <StackPanel>
+                <Button 
+                    Style="{DynamicResource ButtonEmpty}">
+                    <Image Source="{DynamicResource user}" MaxHeight="55"/>
+                </Button>
+                
+                <TextBlock TextAlignment="Center" Margin="0 5" Text="{Binding User.Name}" Style="{DynamicResource TextBlock_H2}"/>
+                <Button 
+                    FontSize="16"
+                    Margin="0 5" Content="Выйти"
+                    Style="{DynamicResource ButtonEmpty}"
+                    Command="{Binding LogoutCommand}"/>
+            </StackPanel>
+        </Border>
 
         <TextBlock Text="Круизы" 
                    FontSize="72"
                    Foreground="White"
                    VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
                    Grid.Column="1" FontFamily="Candara"/>
 
         <Border 
@@ -51,17 +85,17 @@
                         Command="{Binding ToProfileView}"
                         Padding="35 8" Content="Мои заказы"/>
                 
-                <Button Margin="0 9" 
+                <!--<Button Margin="0 9" 
                         FontSize="18"
                         Visibility="{Binding IsAutorized, Converter={StaticResource BoolToVis}}"
                         Command="{Binding LogoutCommand}"
-                        Padding="35 8" Content="Выйти"/>
+                        Padding="35 8" Content="Выйти"/>-->
                 
-                <!--<Button Margin="0 9" 
+                <Button Margin="0 9" 
                         FontSize="18"
                         Visibility="{Binding IsAutorized, Converter={StaticResource BoolToVisInvert}}"
                         Command="{Binding ToAutorize}"
-                        Padding="35 8" Content="Авторизация"/>-->
+                        Padding="35 8" Content="Авторизация"/>
                 
             </StackPanel>
             

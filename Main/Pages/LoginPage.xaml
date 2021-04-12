@@ -20,29 +20,32 @@
 
         
 
-        <StackPanel  Grid.Row="1" Width="260" HorizontalAlignment="Center">
+        <StackPanel  Grid.Row="1"  HorizontalAlignment="Center">
 
 
-            <StackPanel Margin="0 5">
+            <StackPanel Orientation="Horizontal" Margin="0 5">
             <TextBlock 
+                Width="130"
                 Style="{DynamicResource TextBlock_H3}"
                     HorizontalAlignment="Left"
                     Text="Логин:"/>
             <!--<CheckBox IsChecked="{Binding IamAdmin}" Margin="0 10" Content="Я администратор"/>-->
 
-            <TextBox Margin="0 5 0 0"
+            <TextBox 
                      FontSize="15"
+                     Width="250"
                      Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
-            <StackPanel Margin="0 5">
+            <StackPanel Margin="0 8" Orientation="Horizontal">
                 <TextBlock 
+                Width="130"
                 Style="{DynamicResource TextBlock_H3}"
                     HorizontalAlignment="Left"
                     Text="Пароль:"/>
                 <!--<CheckBox IsChecked="{Binding IamAdmin}" Margin="0 10" Content="Я администратор"/>-->
 
-                <ContentPresenter  Margin="0 5 0 0" TextBlock.FontSize="15" Content="{Binding PasswordBox}"/>
+                <ContentPresenter Width="250" TextBlock.FontSize="15" Content="{Binding PasswordBox}"/>
             </StackPanel>
 
             
@@ -57,28 +60,25 @@
 
         </StackPanel>
 
-
-        <Button 
-                    Grid.Row="1"
-                    Margin="25"
-                    FontSize="16"
+        <StackPanel
                     VerticalAlignment="Bottom"
+                    Grid.Row="1"
+                    Margin="25">
+        <Button 
+                    FontSize="18"
                     HorizontalAlignment="Center"
                     Content="Войти" 
-                    Padding="55 10" 
+                    Padding="55 7" 
                     Command="{Binding LoginCommand}"/>
 
         <Button 
-                    Margin="25"  
-                    Content="Назад"
-                    FontSize="14"
-                    FontFamily="Trebuchet MS"
-                    Style="{StaticResource ButtonSkip}"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Bottom"
-            Grid.Row="1"
-                    Padding="45 8   " 
+                    Margin="0 10"  
+                    Content="Вернуться на главную"
+                    HorizontalAlignment="Center"
+                    Grid.Row="1"
+                    FontSize="15"
+                    Padding="45 7   " 
                     Command="{Binding BackCommand}"/>
-
+        </StackPanel>
     </Grid>
 </Page>

@@ -47,7 +47,7 @@
                             FontWeight="DemiBold"
                             Text="{Binding Header}" Style="{DynamicResource TextBlock_H2}"/>
 
-                        <Image MaxHeight="250"
+                        <Image MaxHeight="350"
                                x:Name="img"
                                HorizontalAlignment="Left"
                                Source="{Binding Source}"/>

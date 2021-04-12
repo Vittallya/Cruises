@@ -45,8 +45,11 @@
                 <TextBlock Style="{DynamicResource TextBlock_H3}" Text="Ваше имя:"/>
                 <TextBlock Margin="0 15" Style="{DynamicResource TextBlock_H3}" Text="Номер телефона:"/>
                 <TextBlock 
-                    Style="{DynamicResource TextBlock_H3}" Text="Введите адрес эл. почты:" 
-                     />
+                    Style="{DynamicResource TextBlock_H3}" Text="Введите адрес эл. почты:"/>
+                <TextBlock  Margin="0 15"
+                    Style="{DynamicResource TextBlock_H3}" Text="Логин:"/>
+                <TextBlock 
+                    Style="{DynamicResource TextBlock_H3}" Text="Пароль:"/>
             </StackPanel>
 
             
@@ -56,6 +59,13 @@
                 <TextBox Text="{Binding ClientDto.Phone}" Margin="0 15" FontSize="15" />
                 <TextBox Text="{Binding ClientDto.Email}" 
                          FontSize="15"/>
+                
+                <TextBox Text="{Binding ProfileDto.Login}" 
+                         Margin="0 15" 
+                         FontSize="15"/>
+                
+                <ContentPresenter Content="{Binding PasswordBox}" 
+                         TextBlock.FontSize="15"/>
             </StackPanel>
 
 

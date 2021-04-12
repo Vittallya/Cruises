@@ -1,4 +1,5 @@
 ﻿using BL;
+using DAL.Dto;
 using MVVM_Core;
 
 namespace Main.ViewModels
@@ -22,7 +23,18 @@ namespace Main.ViewModels
 
         public bool IsAnimVisible { get; set; }
 
-        async void Init()
+        public OrderDto OrderDto { get; set; }
+
+        public TourDto TourDto { get; set; }
+
+        void Init()
+        {
+            OrderDto = orderService.GetOrder();
+            TourDto = orderService.GetTour();
+        }
+
+
+        protected async override void Next()
         {
             IsAnimVisible = true;
 
@@ -31,11 +43,7 @@ namespace Main.ViewModels
             orderService.Clear();
             pageservice.ClearHistoryByPool(PoolIndex);
             IsAnimVisible = false;
-        }
 
-
-        protected override void Next()
-        {
             pageservice.ChangePage<Pages.HomePage>(PoolIndex, DisappearAnimation.Default);
         }
 

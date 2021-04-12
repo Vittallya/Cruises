@@ -75,6 +75,13 @@ namespace BL
         {
             await dbContext.Profiles.LoadAsync();
 
+
+            if (string.IsNullOrEmpty(profileDto.Login) || string.IsNullOrEmpty(profileDto.Password))   
+            {
+                ErrorMessage = "Поля 'Логин' и 'Пароль' должны быть заполнены";
+                return false;
+            }
+
             if (await dbContext.Profiles.AnyAsync(x => x.Login == profileDto.Login))
             {
                 ErrorMessage = "Такой логин уже есть";

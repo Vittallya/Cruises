@@ -59,7 +59,8 @@ namespace Main.ViewModels
 
         private async Task OnEntered(AccountEntered arg)
         {
-            pageservice.ChangePage<Pages.HomePage>(DisappearAnimation.Default);
+            pageservice.ClearHistoryByPool(PoolIndex);
+            pageservice.ChangePage<Pages.HomePage>(PoolIndex, DisappearAnimation.Default);
         }
 
         public ICommand ToTours => new Command(x =>
@@ -70,6 +71,7 @@ namespace Main.ViewModels
 
         public ICommand ToLayners => new Command(x =>
         {
+            
             sourceService.SetWorkLaynersImages(window);
             pageservice.ChangePage<Pages.LynersPage>(PoolIndex, DisappearAnimation.Default);
         });

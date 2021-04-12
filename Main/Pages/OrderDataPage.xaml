@@ -40,7 +40,7 @@
                 <TextBox 
                     HorizontalAlignment="Left"
                     Width="90"
-                    Margin="0 7 0 0" Text="{Binding Old}"/>
+                    Margin="0 7 0 0" Text="{Binding Old, UpdateSourceTrigger=PropertyChanged}"/>
 
             </StackPanel>
 
@@ -52,7 +52,7 @@
                 <TextBox 
                     HorizontalAlignment="Left"
                     Width="90"
-                    Margin="0 7 0 0" Text="{Binding Child}"/>
+                    Margin="0 7 0 0" Text="{Binding Child, UpdateSourceTrigger=PropertyChanged}"/>
 
             </StackPanel>
 
@@ -75,7 +75,7 @@
                     Text="Количество дней:"/>
 
                 <TextBox 
-                    Text="{Binding DaysCount}"
+                    Text="{Binding DaysCount, UpdateSourceTrigger=PropertyChanged}"
                     HorizontalAlignment="Left"
                     Width="90"
                     Margin="0 7 0 0"/>
@@ -86,19 +86,11 @@
         </WrapPanel>
 
 
-        <StackPanel 
-                    Grid.Row="2" Grid.Column="1">
-            
-        <Button Content="Получить стоимость" 
-                    FontSize="16"
-                     Margin="0 15"
-                VerticalAlignment="Top"
-                Command="{Binding GetCostCommand}"
-                    HorizontalAlignment="Center"
-                    Style="{DynamicResource LinkButton}"/>
 
         <TextBlock Grid.Row="2" 
-                   Grid.Column="1" 
+                   Grid.Column="0" 
+                       Grid.ColumnSpan="2"
+                       
                      Margin="0 15"
                    Style="{DynamicResource TextBlock_H2}"
                    HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -106,7 +98,7 @@
             <Run Text="Общая стоимость: "/>
             <Run FontStyle="Italic" Text="{Binding FullCost, StringFormat='{}{0} р.'}"/>
         </TextBlock>
-        </StackPanel>
+        
         <Button Content="Назад"                 
                 Grid.Row="3"
                 FontSize="15"
@@ -125,7 +117,7 @@
                 
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Command="{Binding NextCommand}">
+                Command="{Binding Accept}">
             <StackPanel>
                 <TextBlock Visibility="{Binding IsAutorized, Converter={StaticResource BoolToVis}}" Text="Оформить заказ"/>
                 <TextBlock Visibility="{Binding IsAutorized, Converter={StaticResource BoolToVisInvert}}" Text="Продолжить"/>

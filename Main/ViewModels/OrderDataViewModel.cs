@@ -38,7 +38,16 @@ namespace Main.ViewModels
             this.userService = userService;
             this.registerService = registerService;
             this.eventBus = eventBus;
+            PropertyChanged += OrderDataViewModel_PropertyChanged;
             Init();
+        }
+
+        private void OrderDataViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == nameof(DaysCount) || e.PropertyName == nameof(Old) || e.PropertyName == nameof(Child))
+            {
+                FullCost = GetCost(cost, costChild, Old, Child, DaysCount);
+            }
         }
 
         void Init()
@@ -83,11 +92,10 @@ namespace Main.ViewModels
             return true;
         }
 
-        public ICommand GetCostCommand => new Command(x =>
+        public ICommand Accept => new Command(x =>
         {
-
-            FullCost = GetCost(cost, costChild, Old, Child, DaysCount);
-        });
+            Next();
+        }, y => Old > 0 && DaysCount > 0);
 
         protected override void Next()
         {
@@ -103,8 +111,16 @@ namespace Main.ViewModels
             OrderDto.StartDate = new DateTimeOffset(StartDate);
             OrderDto.EndDate = new DateTimeOffset(StartDate.AddDays(DaysCount));
             orderService.SetupFilledOrder(OrderDto);
-            
-            pageservice.ChangePage<Pages.ClientRegisterPage>(DisappearAnimation.Default);
+
+            if (userService.IsAutorized)
+            {
+                orderService.SetupClient(userService.CurrentUser.Id);
+                pageservice.ChangePage<Pages.OrderResultPage>(PoolIndex, DisappearAnimation.Default);
+            }
+            else
+            {
+                pageservice.ChangePage<Pages.ClientRegisterPage>(PoolIndex, DisappearAnimation.Default);
+            }
             
         }
 

@@ -2,6 +2,7 @@
 using DAL.Dto;
 using MVVM_Core;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Main.ViewModels
 {
@@ -13,6 +14,8 @@ namespace Main.ViewModels
 
         public ClientDto ClientDto { get; set; }
         public ProfileDto ProfileDto { get; set; } = new ProfileDto();
+
+        public PasswordBox PasswordBox { get; set; } = new PasswordBox();
 
         public bool IsRegisterRequiered { get; set; }
 
@@ -36,8 +39,18 @@ namespace Main.ViewModels
         protected override async void Next()
         {
             IsErrorVisible = false;
+
+
+
+            ProfileDto.Password = PasswordBox.Password;
             registerService.SetupClient(ClientDto);
 
+
+            if (!await registerService.SetupProfile(ProfileDto))
+            {
+                MessageBox.Show(registerService.ErrorMessage);
+                return;
+            }
 
             var res = await registerService.RegisterAsync();
 
