@@ -1,6 +1,7 @@
 ﻿using BL;
 using DAL.Dto;
 using MVVM_Core;
+using System.Windows;
 
 namespace Main.ViewModels
 {
@@ -37,6 +38,17 @@ namespace Main.ViewModels
         protected async override void Next()
         {
             IsAnimVisible = true;
+
+
+            var res1 = await registerService.RegisterAsync();
+
+            if (!res1.Item1)
+            {
+                MessageBox.Show(registerService.ErrorMessage, "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            registerService.Clear();
 
             bool res = await orderService.ApplyOrder();
             Message = res ? "Оформлено!" : orderService.ErrorMessage;

@@ -40,8 +40,6 @@ namespace Main.ViewModels
         {
             IsErrorVisible = false;
 
-
-
             ProfileDto.Password = PasswordBox.Password;
             registerService.SetupClient(ClientDto);
 
@@ -52,18 +50,7 @@ namespace Main.ViewModels
                 return;
             }
 
-            var res = await registerService.RegisterAsync();
-
-            if (res.Item1)
-            {
-                orderService.SetupClient(res.Item2);
-                registerService.Clear();
-                pageservice.ChangePage<Pages.OrderResultPage>(PoolIndex, DisappearAnimation.Default);
-            }
-            else
-            {
-                MessageBox.Show(registerService.ErrorMessage, "", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            pageservice.ChangePage<Pages.OrderResultPage>(PoolIndex, DisappearAnimation.Default);
         }
 
         public override int PoolIndex => Rules.Pages.MainPool;
