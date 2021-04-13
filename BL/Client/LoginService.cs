@@ -41,7 +41,7 @@ namespace BL
                 userService.SetupUser(dto);
                 return true;
             }
-            ErrorMessage = "Некорректные входные данные";
+            ErrorMessage = "Неправильные логин или пароль";
 
             return false;
         }

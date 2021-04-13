@@ -86,6 +86,10 @@
     <Compile Include="Migrations\202104111414521_start2.designer.cs">
       <DependentUpon>202104111414521_start2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104130813181_fillDb.cs" />
+    <Compile Include="Migrations\202104130813181_fillDb.designer.cs">
+      <DependentUpon>202104130813181_fillDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Order.cs" />
@@ -118,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104111414521_start2.resx">
       <DependentUpon>202104111414521_start2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104130813181_fillDb.resx">
+      <DependentUpon>202104130813181_fillDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

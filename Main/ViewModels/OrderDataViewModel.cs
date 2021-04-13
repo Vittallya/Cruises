@@ -68,21 +68,6 @@ namespace Main.ViewModels
 
         bool Check()
         {
-            //if (!IsAutorized)
-            //{
-            //    if (string.IsNullOrEmpty(ClientDto.Name))
-            //    {
-            //        MessageBox.Show("Поле 'Имя' должно быть заполнено", "", MessageBoxButton.OK, MessageBoxImage.Error);
-            //        return false;
-            //    }
-
-            //    if (string.IsNullOrEmpty(ClientDto.Phone))
-            //    {
-            //        MessageBox.Show("Поле 'Номер телефона' должно быть заполнено", "", MessageBoxButton.OK, MessageBoxImage.Error);
-            //        return false;
-            //    }
-            //}
-
 
             if (StartDate < DateTime.Now)
             {

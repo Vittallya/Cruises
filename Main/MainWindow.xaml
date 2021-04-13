@@ -38,6 +38,7 @@
                 <Ellipse.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="2" ScaleY="2"/>
+                        <TranslateTransform X="100" />
                     </TransformGroup>
                 </Ellipse.RenderTransform>
 
@@ -51,35 +52,40 @@
                         <BeginStoryboard>
                             <Storyboard RepeatBehavior="Forever">
 
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)">
-                                    <EasingDoubleKeyFrame KeyTime="0:0:0" Value="2.5" >
-                                        <EasingDoubleKeyFrame.EasingFunction>
-                                            <ElasticEase Oscillations="0" />
-                                        </EasingDoubleKeyFrame.EasingFunction>
-                                    </EasingDoubleKeyFrame>
+                                <DoubleAnimation  
+                                    Duration="0:0:10"
+                                    To="0"
+                                    Storyboard.TargetProperty="RenderTransform.Children[1].X"/>
+                                <DoubleAnimation  
+                                    BeginTime="0:0:10"
+                                    Duration="0:0:10"
+                                    To="-100"
+                                    Storyboard.TargetProperty="RenderTransform.Children[1].X"/>
 
-                                    <EasingDoubleKeyFrame KeyTime="0:0:35" Value="1" >
-                                        <EasingDoubleKeyFrame.EasingFunction>
-                                            <ElasticEase Oscillations="0"/>
-                                        </EasingDoubleKeyFrame.EasingFunction>
-                                    </EasingDoubleKeyFrame>
+                            </Storyboard>
+                        </BeginStoryboard>
+                        <BeginStoryboard>
+                            <Storyboard RepeatBehavior="Forever">
 
-                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimation  
+                                    Duration="0:0:10"
+                                    To="2.5"
+                                    Storyboard.TargetProperty="RenderTransform.Children[0].ScaleX"/>
+                                <DoubleAnimation  
+                                    Duration="0:0:10"
+                                    To="2.5"
+                                    Storyboard.TargetProperty="RenderTransform.Children[0].ScaleY"/>
 
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)">
-                                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="2.5" >
-                                        <EasingDoubleKeyFrame.EasingFunction>
-                                            <ElasticEase Oscillations="0" />
-                                        </EasingDoubleKeyFrame.EasingFunction>
-                                    </EasingDoubleKeyFrame>
-
-                                    <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="1" >
-                                        <EasingDoubleKeyFrame.EasingFunction>
-                                            <ElasticEase Oscillations="0"/>
-                                        </EasingDoubleKeyFrame.EasingFunction>
-                                    </EasingDoubleKeyFrame>
-
-                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimation  
+                                    BeginTime="0:0:10"
+                                    Duration="0:0:10"
+                                    To="2"
+                                    Storyboard.TargetProperty="RenderTransform.Children[0].ScaleX"/>
+                                <DoubleAnimation  
+                                    BeginTime="0:0:10"
+                                    Duration="0:0:10"
+                                    To="2"
+                                    Storyboard.TargetProperty="RenderTransform.Children[0].ScaleY"/>
 
                             </Storyboard>
                         </BeginStoryboard>

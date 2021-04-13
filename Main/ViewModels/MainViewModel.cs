@@ -44,7 +44,7 @@ namespace Main.ViewModels
             Init();
         }
 
-        public string LoadingText { get; set; } = "Загрузка бд...";
+        public string LoadingText { get; set; }
 
         async void Init()
         {
